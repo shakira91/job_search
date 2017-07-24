@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Simple App</title>
+    <meta name="viewport" content="initial-scale=1.0">
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css?family=Arvo" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Raleway:100" rel="stylesheet">
+  </head>
+  <body>  
+    <div id="question1Overlay">
+      <div class="wrapper">
+        <h2>What type of job are you looking for?</h2>
+
+        <input type="text" size="50" name="job" value="" id="userEnteredJob" placeholder="eg: assistant jobs, web jobs, analyst">
+        
+        <input type="submit" value="Submit" id="question1OverlaySubmit">
+      </div> 
+    </div>
+    <div id="question2Overlay" style="display:none;">
+      <div class="wrapper">
+        <h2>What NYC address would you commute from to this new job?</h2>
+
+        <input type="text" size="50" name="job" value="" id="userEnteredAddress" placeholder="eg: 411 5th Ave NY, NY">
+        
+        <input type="submit" value="Submit" id="question2OverlaySubmit">
+      </div> 
+    </div>
+    <div id="map">
+      
+    
+    </div>
+    <div id="jobSideBar">
+      <ul id="jobSideBarList"></ul>
+    </div>
+    <div class="modal">
+      <div class="destinationDetails"></div>
+    </div>
+
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDevqQvBu9rycKFqhQg4WVTBPs0Ma3aNSs"
+    async defer></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="map.js"></script>
+    <script src="scripts.js"></script>
+</body>
+</html>
+<!-- DISCALIMER end location assumes that the opportunity takes place at the company's headquarters. Eventhough the job may or may not take place there.  -->
