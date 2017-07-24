@@ -104,7 +104,7 @@ $("#question1OverlaySubmit").on("click", function(){
     }
     if (validateAddress()) {
 
-      var dice = new request('GET', 'https://service.dice.com/api/rest/jobsearch/v1/simple.json?text=' + userInputJob + '&city=New+York&pgcnt=120' , true, true, 'json');
+      var dice = new request('GET', 'http://service.dice.com/api/rest/jobsearch/v1/simple.json?text=' + userInputJob + '&city=New+York&pgcnt=120' , true, true, 'json');
         dice.jobRequest(userInputJob);
     }
 
