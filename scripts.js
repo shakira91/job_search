@@ -70,9 +70,18 @@ request.prototype.jobRequest = function(userInputJob) {
     });
 }
 
+var submitData = function(dataInput, dataButton) {
+ $(dataInput).keydown(function(e){    
+    if(e.keyCode === 13){
+       $(dataButton).trigger("click");
+    }
+  });
+}
 
 
 $("#question1Overlay h2, #question1Overlay p, #question1Overlay input, #question2Overlay h2, #question2Overlay p, #question2Overlay input").fadeIn("slow");
+
+submitData("#userEnteredJob", "#question1OverlaySubmit");
 
 $("#question1OverlaySubmit").on("click", function(){
 
@@ -91,6 +100,8 @@ $("#question1OverlaySubmit").on("click", function(){
       $("#question1Overlay").remove();
       $("#question2Overlay").fadeIn("slow");
 
+      submitData("#userEnteredAddress", "#question2OverlaySubmit");
+
       $("#question2OverlaySubmit").on("click", function(){
 
         userEnteredAddress = $("#userEnteredAddress").val();
@@ -103,6 +114,8 @@ $("#question1OverlaySubmit").on("click", function(){
       }
     }
     if (validateAddress()) {
+
+      $("#jobSideBar, .modal").css("display", "block");
 
       var dice = new request('GET', 'http://service.dice.com/api/rest/jobsearch/v1/simple.json?text=' + userInputJob + '&city=New+York&pgcnt=120' , true, true, 'json');
         dice.jobRequest(userInputJob);

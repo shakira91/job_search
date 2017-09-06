@@ -1,136 +1,163 @@
  /* Always set the map height explicitly to define the size of the div
        * element that contains the map. */
-      #map {
-        height: 100%;
-        width: 65%;
-        float: left;
-        position: fixed;
-      }
-      /* Optional: Makes the sample page fill the window. */
-      html, body {
-        height: 100%;
-        margin: 0;
-        padding: 0;
-        overflow: hidden;
-      }
-      textarea:focus, input:focus{
-        outline: none;
-      }
-      #jobSideBar li {
-        font-family: 'Times New Roman';
-        font-size: 18px;
-      }
-      #jobSideBar {
-        height: 100%;
-        overflow-y: scroll;
-        position: relative;
-        box-shadow: -1px -1px 1px rgba(136, 136, 138, 0.38);
-      }
-      #jobSideBarList {
-        padding: 0;
-      }
-      #jobSideBarList li  {
-        list-style-type: none;
-        padding: 20px;
-      }
-      #jobSideBar h2 {
-        font-family: 'Arvo', serif;
-        margin: 0; 
-      }
-      .highlight,  .highlight a{
-        background-color: #0080ff;
-        color: white;
-      }
-      .apply  {
-        text-decoration: none;
-      }
-    .modal {
-        position: absolute;
-        background: #282828;
-        clear: both;
-        float: right;
-        right: 35%;
-        height: 115px;
-        width: 0px;
-        bottom: 0;
-    }
-    .grow {
-      width: 65%;
-      transition-duration: 1s;
-    }
+#map {
+  height: 100%;
+  width: 65%;
+  float: left;
+  position: fixed;
+}
+/* Optional: Makes the sample page fill the window. */
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+textarea:focus, input:focus{
+  outline: none;
+}
+#jobSideBar li {
+  font-family: 'Times New Roman';
+  font-size: 18px;
+}
+#jobSideBar {
+  display: none;
+  height: 100%;
+  overflow-y: scroll;
+  position: relative;
+  box-shadow: -1px -1px 1px rgba(136, 136, 138, 0.38);
+}
+#jobSideBarList {
+  padding: 0;
+}
+#jobSideBarList li  {
+  list-style-type: none;
+  padding: 20px;
+}
+#jobSideBar h2 {
+  font-family: 'Arvo', serif;
+  margin: 0; 
+}
+.highlight,  .highlight a{
+  background-color: #0080ff;
+  color: white;
+}
+.apply  {
+  text-decoration: none;
+}
+.modal {
+  position: absolute;
+  background: #282828;
+  clear: both;
+  float: right;
+  right: 35%;
+  height: 115px;
+  width: 0px;
+  bottom: 0;
+}
+.grow {
+  width: 65%;
+  transition-duration: 1s;
+}
 
-    .destinationDetails {
-      color: white;
-      font-family: 'Raleway', sans-serif;
-      font-size: 1.5em;
-      padding: 20px;
-    }
+.destinationDetails {
+  color: white;
+  font-family: 'Raleway', sans-serif;
+  font-size: 1.5em;
+  padding: 20px;
+}
 
-    #question1Overlay, #question2Overlay { 
-      background-color: #3b28cc;
-      /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#3b28cc+0,add7f6+100 */
-      background: #3b28cc; /* Old browsers */
-      background: -moz-linear-gradient(-45deg, #3b28cc 0%, #add7f6 100%); /* FF3.6-15 */
-      background: -webkit-linear-gradient(-45deg, #3b28cc 0%,#add7f6 100%); /* Chrome10-25,Safari5.1-6 */
-      background: linear-gradient(135deg, #3b28cc 0%,#add7f6 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-      filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3b28cc', endColorstr='#add7f6',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
-      color: white;
-      height: 100%;
-    }
+#question1Overlay, #question2Overlay { 
+  background-color: #3b28cc;
+  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#3b28cc+0,add7f6+100 */
+  background: #3b28cc; /* Old browsers */
+  background: -moz-linear-gradient(-45deg, #3b28cc 0%, #add7f6 100%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(-45deg, #3b28cc 0%,#add7f6 100%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(135deg, #3b28cc 0%,#add7f6 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3b28cc', endColorstr='#add7f6',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+  color: white;
+  height: 100%;
+}
 
-    #question1Overlay .wrapper, #question2Overlay .wrapper{ 
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 15em 0px 0px;
-    }
+#question1Overlay .wrapper, #question2Overlay .wrapper{ 
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 15em 0px 0px;
+}
 
-    #question1Overlay h2, #question1Overlay p, #question1Overlay input,
-     #question2Overlay h2, #question2Overlay p, #question2Overlay input {
-      font-family: 'Raleway', sans-serif;
-      display: none;
-    }
+#question1Overlay h2, #question1Overlay p, #question1Overlay input,
+ #question2Overlay h2, #question2Overlay p, #question2Overlay input {
+  font-family: 'Raleway', sans-serif;
+  display: none;
+}
 
-    #question1Overlay h2,   #question2Overlay h2{
-      font-size: 4em; 
-    }
+#question1Overlay h2,   #question2Overlay h2{
+  font-size: 4em; 
+}
 
-    #question1Overlay input[type="text"], #question2Overlay input[type="text"] {
-      display: inline-block;
-      height: 70px;
-      border-bottom: 1px solid white !important;
-      background: transparent;
-      border: none;
-      color: white;
-      font-style: italic;
-      font-size: 1.5em;
+#question1Overlay input[type="text"], #question2Overlay input[type="text"] {
+  display: inline-block;
+  height: 70px;
+  border-bottom: 1px solid white !important;
+  background: transparent;
+  border: none;
+  color: white;
+  font-style: italic;
+  font-size: 1.5em;
+}
 
-    }
+#question1Overlay input[type="submit"], #question2Overlay input[type="submit"] {
+  display: inline-block;
+  height: 54px;
+  background: transparent;
+  border: 1px solid white;
+  color: white;
+  font-size: 1.5em;
+  padding: 0px 67px;
+  margin-left: 55px;
+}
 
-    #question1Overlay input[type="submit"], #question2Overlay input[type="submit"] {
-      display: inline-block;
-      height: 54px;
-      background: transparent;
-      border: 1px solid white;
-      color: white;
-      font-size: 1.5em;
-      padding: 0px 67px;
-      margin-left: 55px;
+#question1Overlay input[type="text"]::-webkit-input-placeholder,
+#question2Overlay input[type="text"]::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  color: white;
+}
+#question1Overlay input[type="text"]::-moz-placeholder,
+#question2Overlay input[type="text"]::-moz-placeholder { /* Firefox 19+ */
+  color: white;
+}
+#question1Overlay input[type="text"]:-ms-input-placeholder,
+#question2Overlay input[type="text"]:-ms-input-placeholder { /* IE 10+ */
+  color: white;
+}
+#question1Overlay input[type="text"]:-moz-placeholder,
+#question2Overlay input[type="text"]:-moz-placeholder { /* Firefox 18- */
+  color: white;
+}
 
+@media screen and (max-width: 1095px) {
+  body {
+        overflow: auto;
     }
+  #map {
+    width: 100%;
+    float: none;
+  }
+  .modal {
+    display: none; 
+    float: none;
+    position: static; 
+  }
+  .grow {
+    width: 100%;
+  }
+  #question1Overlay .wrapper, #question2Overlay .wrapper {
+    padding: 1em 50px 0px;
 
-    #question1Overlay input[type="text"]::-webkit-input-placeholder,
-    #question2Overlay input[type="text"]::-webkit-input-placeholder { /* Chrome/Opera/Safari */
-      color: white;
-    }
-    #question1Overlay input[type="text"]::-moz-placeholder,
-    #question2Overlay input[type="text"]::-moz-placeholder { /* Firefox 19+ */
-      color: white;
-    }
-    #question1Overlay input[type="text"]:-ms-input-placeholder,
-    #question2Overlay input[type="text"]:-ms-input-placeholder { /* IE 10+ */
-      color: white;
-    }
-   #question1Overlay input[type="text"]:-moz-placeholder,
-   #question2Overlay input[type="text"]:-moz-placeholder { /* Firefox 18- */
-      color: white;
-    }
+  }
+  #question1Overlay input[type="submit"], #question2Overlay input[type="submit"] {
+    display: block;
+    width: 40%;
+    margin: 0 auto;
+    margin-top: 50px;
+  }
+}
