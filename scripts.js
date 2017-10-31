@@ -40,7 +40,7 @@ request.prototype.googleRequest = function(companies, userEnteredAddress) {
       });
 }
 
-var google = new request('POST', 'https://maps.googleapis.com/maps/api/directions/json?mode=transit&transit_mode=train&key=AIzaSyAkqHQ3ubxqS1SznXw9h92FJMlzvE0njQ8&' , true, true, 'json');
+var google = new request('POST', 'https://maps.googleapis.com/maps/api/directions/json?mode=transit&transit_mode=train&key=AIzaSyAkqHQ3ubxqS1SznXw9h92FJMlzvE0njQ8&' , true, true, 'jsonp');
 
 request.prototype.jobRequest = function(userInputJob) { 
   $("#question2Overlay").remove();
