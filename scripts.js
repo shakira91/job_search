@@ -3,6 +3,9 @@
 var userInputJob;
 var userEnteredAddress;
 var company;
+var title;
+var date;
+var url;
 var companiesArray = [];
 var jobCoordinates;
 var jobAddress;
@@ -20,12 +23,6 @@ var request = function(type, url, crossDomain, crossOrigin, dataType) {
 }
 
 request.prototype.googleRequest = function(companies, userEnteredAddress) {
-   $.ajaxPrefilter(function(options) {
-        if (options.crossDomain && $.support.cors) {
-          options.url = 'https://cors-anywhere.herokuapp.com/' + options.url;
-        }
-    });
-
     $.ajax({
         type: this.type,
         url: this.url + 'origin='+ userEnteredAddress + '&destination=' + companies + "+New+York+City",
@@ -33,6 +30,7 @@ request.prototype.googleRequest = function(companies, userEnteredAddress) {
         crossOrigin: this.crossOrigin,
         dataType: this.dataType
       }).done(function(response){
+        console.log(response)
         //console.log(response.routes[0].legs[0].distance.text)
           jobCoordinates = response.routes[0].legs[0].end_location;
           jobAddress = response.routes[0].legs[0].end_address;
@@ -42,7 +40,7 @@ request.prototype.googleRequest = function(companies, userEnteredAddress) {
       });
 }
 
-var google = new request('POST', 'https://maps.googleapis.com/maps/api/directions/json?mode=transit&transit_mode=train&key=AIzaSyB0BIRMZlf9e5S-qxixsJrFVLLYUG2sizE&' , true, true, 'json');
+var google = new request('POST', 'https://maps.googleapis.com/maps/api/directions/json?mode=transit&transit_mode=train&key=AIzaSyAkqHQ3ubxqS1SznXw9h92FJMlzvE0njQ8&' , true, true, 'json');
 
 request.prototype.jobRequest = function(userInputJob) { 
   $("#question2Overlay").remove();
@@ -54,19 +52,23 @@ request.prototype.jobRequest = function(userInputJob) {
       crossOrigin: this.crossOrigin,
       dataType: this.dataType
     }).done(function(response){
-      $.each(response.resultItemList, function(key, value){
+      $.each(response.listings.listing, function(key, value){
         for (var jobKey in value) {
         if (value.hasOwnProperty(jobKey)) {
-          company = value.company;    
+          company = value.company;
+          title = value.title;
+          date = value.post_date;
+          url = value.url  
           }         
          }
-         companiesArray.push(company);
-         $("#jobSideBarList").append('<li><h2>' + company + '</h2>' + value.jobTitle + '<br> ' +  'Posted on: ' + value.date + '<br> ' + '<a class="apply" target="_blank" href="' + value.detailUrl + ' ">Apply on <img src="img/dice-logo@2x.png"></a>' + '</li></ul>');
+         companiesArray.push(company.name);
+         $("#jobSideBarList").append('<li><h2>' + company.name + '</h2>' + title + '<br> ' +  'Posted on: ' + date + '<br> ' + '<a class="apply" target="_blank" href="' + url + ' ">Apply on <img class="align" src="img/dice-logo@2x.png"></a>' + '</li></ul>');
       });
       for (var c = 0; c < companiesArray.length; c++) {
        google.googleRequest(companiesArray[c], userEnteredAddress);
     }
     initMap();
+    $("#loader").remove();
     });
 }
 
@@ -85,7 +87,7 @@ submitData("#userEnteredJob", "#question1OverlaySubmit");
 
 $("#question1OverlaySubmit").on("click", function(){
 
-    userInputJob = $("#userEnteredJob").val();
+    userInputJob = $("#userEnteredJob option:selected").val();
 
     var validateInput = function() {
       if (!userInputJob == " ") {
@@ -114,10 +116,11 @@ $("#question1OverlaySubmit").on("click", function(){
       }
     }
     if (validateAddress()) {
+      $("body").append("<img id='loader' src='img/30.gif'>");
 
       $("#jobSideBar, .modal").css("display", "block");
 
-      var dice = new request('GET', 'http://service.dice.com/api/rest/jobsearch/v1/simple.json?text=' + userInputJob + '&city=New+York&pgcnt=120' , true, true, 'json');
+      var dice = new request('GET', 'https://authenticjobs.com/api/?api_key=8273c26a4d07129e28a678e48772893d&method=aj.jobs.search&keywords='+ userInputJob +'&perpage=100&format=json&location="NY"', true, true, 'json');
         dice.jobRequest(userInputJob);
     }
 

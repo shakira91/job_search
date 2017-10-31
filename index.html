@@ -11,9 +11,14 @@
   <body>  
     <div id="question1Overlay">
       <div class="wrapper">
-        <h2>What type of job are you looking for?</h2>
-
-        <input type="text" size="50" name="job" value="" id="userEnteredJob" placeholder="eg: assistant jobs, web jobs, analyst">
+        <h2>Please choose an industry.</h2>
+        <select id="userEnteredJob">
+          <option></option>
+          <option value="it">IT</option>
+          <option value="design">Design</option>
+          <option value="webdev">Web Developer</option>
+          <option value="ux">UX</option>
+        </select>
         
         <input type="submit" value="Submit" id="question1OverlaySubmit">
       </div> 

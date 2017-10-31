@@ -13,9 +13,32 @@ html, body {
   padding: 0;
   overflow: hidden;
 }
+
+.align {
+  vertical-align: middle;
+}
+
 textarea:focus, input:focus{
   outline: none;
 }
+#userEnteredJob {
+  width: 60%;
+  height: 58px;
+  font-size: 1.5em;
+  background: none;
+  border: 1px solid white;
+  color: white;
+}
+
+#loader {
+  position: absolute;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+  top: 50%;
+}
+
 #jobSideBar li {
   font-family: 'Times New Roman';
   font-size: 18px;
@@ -44,6 +67,7 @@ textarea:focus, input:focus{
 }
 .apply  {
   text-decoration: none;
+  color: #0f80ff;
 }
 .modal {
   position: absolute;
