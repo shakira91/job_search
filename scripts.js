@@ -23,6 +23,11 @@ var request = function(type, url, crossDomain, crossOrigin, dataType) {
 }
 
 request.prototype.googleRequest = function(companies, userEnteredAddress) {
+  jQuery.ajaxPrefilter(function(options) {
+    if (options.crossDomain && jQuery.support.cors) {
+        options.url = 'https://cors-anywhere.herokuapp.com/' + options.url;
+    }
+});
     $.ajax({
         type: this.type,
         url: this.url + 'origin='+ userEnteredAddress + '&destination=' + companies + "+New+York+City",
@@ -43,6 +48,11 @@ var google = new request('POST', 'https://maps.googleapis.com/maps/api/direction
 
 request.prototype.jobRequest = function(userInputJob) { 
   $("#question2Overlay").remove();
+  jQuery.ajaxPrefilter(function(options) {
+    if (options.crossDomain && jQuery.support.cors) {
+        options.url = 'https://cors-anywhere.herokuapp.com/' + options.url;
+    }
+});
 
   $.ajax({
       type: this.type,
