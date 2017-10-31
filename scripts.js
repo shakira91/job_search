@@ -27,13 +27,7 @@ request.prototype.googleRequest = function(companies, userEnteredAddress) {
         type: this.type,
         url: this.url + 'origin='+ userEnteredAddress + '&destination=' + companies + "+New+York+City",
         crossDomain: this.crossDomain,
-        crossOrigin: this.crossOrigin,
         dataType: this.dataType,
-        headers: {
-                    'Access-Control-Allow-Origin: *',
-                    'Access-Control-Allow-Methods: GET, POST, PATCH, PUT, DELETE, OPTIONS',
-                    'Access-Control-Allow-Headers: Origin, Content-Type, X-Auth-Token'
-                },
       }).done(function(response){
         console.log(response)
         //console.log(response.routes[0].legs[0].distance.text)
@@ -45,7 +39,7 @@ request.prototype.googleRequest = function(companies, userEnteredAddress) {
       });
 }
 
-var google = new request('POST', 'https://maps.googleapis.com/maps/api/directions/json?mode=transit&transit_mode=train&key=AIzaSyAkqHQ3ubxqS1SznXw9h92FJMlzvE0njQ8&' , true, true, 'json');
+var google = new request('POST', 'https://maps.googleapis.com/maps/api/directions/json?mode=transit&transit_mode=train&key=AIzaSyAkqHQ3ubxqS1SznXw9h92FJMlzvE0njQ8&' , true, 'json');
 
 request.prototype.jobRequest = function(userInputJob) { 
   $("#question2Overlay").remove();
@@ -54,13 +48,7 @@ request.prototype.jobRequest = function(userInputJob) {
       type: this.type,
       url: this.url,
       crossDomain: this.crossDomain,
-      crossOrigin: this.crossOrigin,
       dataType: this.dataType,
-      headers: {
-                    'Access-Control-Allow-Origin: *',
-                    'Access-Control-Allow-Methods: GET, POST, PATCH, PUT, DELETE, OPTIONS',
-                    'Access-Control-Allow-Headers: Origin, Content-Type, X-Auth-Token'
-                },
     }).done(function(response){
       $.each(response.listings.listing, function(key, value){
         for (var jobKey in value) {
@@ -130,7 +118,7 @@ $("#question1OverlaySubmit").on("click", function(){
 
       $("#jobSideBar, .modal").css("display", "block");
 
-      var dice = new request('GET', 'https://authenticjobs.com/api/?api_key=8273c26a4d07129e28a678e48772893d&method=aj.jobs.search&keywords='+ userInputJob +'&perpage=100&format=json&location="NY"', true, true, 'json');
+      var dice = new request('GET', 'https://authenticjobs.com/api/?api_key=8273c26a4d07129e28a678e48772893d&method=aj.jobs.search&keywords='+ userInputJob +'&perpage=100&format=json&location="NY"', true, 'json');
         dice.jobRequest(userInputJob);
     }
 
