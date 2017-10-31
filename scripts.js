@@ -40,7 +40,7 @@ request.prototype.googleRequest = function(companies, userEnteredAddress) {
       });
 }
 
-var google = new request('POST', 'https://maps.googleapis.com/maps/api/directions/json?mode=transit&transit_mode=train&key=AIzaSyAkqHQ3ubxqS1SznXw9h92FJMlzvE0njQ8&' , true, true, 'jsonp');
+var google = new request('POST', 'https://maps.googleapis.com/maps/api/directions/json?mode=transit&transit_mode=train&key=AIzaSyAkqHQ3ubxqS1SznXw9h92FJMlzvE0njQ8&' , true, true, 'json');
 
 request.prototype.jobRequest = function(userInputJob) { 
   $("#question2Overlay").remove();
@@ -50,7 +50,10 @@ request.prototype.jobRequest = function(userInputJob) {
       url: this.url,
       crossDomain: this.crossDomain,
       crossOrigin: this.crossOrigin,
-      dataType: this.dataType
+      dataType: this.dataType,
+      headers: {
+                    'Access-Control-Allow-Origin': '*'
+                },
     }).done(function(response){
       $.each(response.listings.listing, function(key, value){
         for (var jobKey in value) {
