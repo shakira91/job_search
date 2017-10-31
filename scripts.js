@@ -23,17 +23,15 @@ var request = function(type, url, crossDomain, crossOrigin, dataType) {
 }
 
 request.prototype.googleRequest = function(companies, userEnteredAddress) {
-  $.ajaxPrefilter(function(options) {
-    if (options.crossDomain && $.support.cors) {
-        options.url = 'https://cors-anywhere.herokuapp.com/' + options.url;
-    }
-});
     $.ajax({
         type: this.type,
         url: this.url + 'origin='+ userEnteredAddress + '&destination=' + companies + "+New+York+City",
         crossDomain: this.crossDomain,
         crossOrigin: this.crossOrigin,
-        dataType: this.dataType
+        dataType: this.dataType,
+        headers: {
+                    'Access-Control-Allow-Origin': '*'
+                },
       }).done(function(response){
         console.log(response)
         //console.log(response.routes[0].legs[0].distance.text)
@@ -49,11 +47,6 @@ var google = new request('POST', 'https://maps.googleapis.com/maps/api/direction
 
 request.prototype.jobRequest = function(userInputJob) { 
   $("#question2Overlay").remove();
-   $.ajaxPrefilter(function(options) {
-    if (options.crossDomain && $.support.cors) {
-        options.url = 'https://cors-anywhere.herokuapp.com/' + options.url;
-    }
-});
 
   $.ajax({
       type: this.type,
