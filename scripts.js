@@ -30,7 +30,9 @@ request.prototype.googleRequest = function(companies, userEnteredAddress) {
         crossOrigin: this.crossOrigin,
         dataType: this.dataType,
         headers: {
-                    'Access-Control-Allow-Origin': '*'
+                    'Access-Control-Allow-Origin': '*',
+                    'Access-Control-Allow-Methods': 'GET, POST, PATCH, PUT, DELETE, OPTIONS',
+                    'Access-Control-Allow-Headers': 'Origin, Content-Type, X-Auth-Token'
                 },
       }).done(function(response){
         console.log(response)
@@ -55,7 +57,9 @@ request.prototype.jobRequest = function(userInputJob) {
       crossOrigin: this.crossOrigin,
       dataType: this.dataType,
       headers: {
-                    'Access-Control-Allow-Origin': '*'
+                    'Access-Control-Allow-Origin': '*',
+                    'Access-Control-Allow-Methods': 'GET, POST, PATCH, PUT, DELETE, OPTIONS',
+                    'Access-Control-Allow-Headers': 'Origin, Content-Type, X-Auth-Token'
                 },
     }).done(function(response){
       $.each(response.listings.listing, function(key, value){
