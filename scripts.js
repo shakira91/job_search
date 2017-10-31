@@ -118,7 +118,7 @@ $("#question1OverlaySubmit").on("click", function(){
 
       $("#jobSideBar, .modal").css("display", "block");
 
-      var dice = new request('GET', 'https://authenticjobs.com/api/?api_key=8273c26a4d07129e28a678e48772893d&method=aj.jobs.search&keywords='+ userInputJob +'&perpage=100&format=json&location="NY"', true, 'json');
+      var dice = new request('GET', 'https://authenticjobs.com/api/?api_key=8273c26a4d07129e28a678e48772893d&method=aj.jobs.search&keywords='+ userInputJob +'&perpage=100&format=json&location="NY"', true, 'jsonp');
         dice.jobRequest(userInputJob);
     }
 
